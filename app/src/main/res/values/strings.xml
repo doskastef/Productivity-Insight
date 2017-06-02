@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Productivity Insight</string>
+    <string name="sign_up_text">Sign Up:</string>
+    <string name="signup_btn_txt">Sign Up</string>
+    <string name="email_label_txt">Enter email:</string>
+    <string name="password_label_txt">Enter password:</string>
+    <string name="email_field_hint">email</string>
+    <string name="password_field_hint">password</string>
+    <string name="monthly_button_txt">Monthly Productivity</string>
+    <string name="daily_button_txt">Daily Productivity</string>
+</resources>
