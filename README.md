@@ -1,4 +1,4 @@
-# Productivity-Insight
+# Productivity Insight
 
 **Android application that analyzes and keeps track of the user's and monthly productivity.**
 
@@ -46,11 +46,11 @@ The app is not published on the Google Play Store yet. Will add installation and
 
 * **Stefan Delic** - [delicmakaveli](https://github.com/delicmakaveli)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/delicmakaveli/Productivity-Insight/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/delicmakaveli/Productivity-Insight/blob/master/LICENCE.md) file for details
 
 ## Acknowledgments
 
