@@ -15,5 +15,6 @@ public class DaysActivity extends AppCompatActivity {
         Toast t = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
         t.show();
 
+        // TODO ADD LIST VIEW SORTED BY PRODUCTIVITY
     }
 }

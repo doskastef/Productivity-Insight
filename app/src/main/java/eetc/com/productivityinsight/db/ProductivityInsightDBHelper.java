@@ -136,6 +136,7 @@ public class ProductivityInsightDBHelper extends SQLiteOpenHelper {
         if (cursor.getCount() < 1) {
             return true;
         }
+        cursor.close();
         return false;
     }
 }

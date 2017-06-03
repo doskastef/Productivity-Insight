@@ -15,5 +15,7 @@ public class MonthsActivity extends AppCompatActivity {
         CharSequence msg = "JUN " + bundle.get("jun").toString();
         Toast t = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
         t.show();
+
+        // TODO ADD LIST VIEW SORTED BY PRODUCTIVITY
     }
 }
