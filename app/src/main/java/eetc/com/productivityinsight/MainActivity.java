@@ -30,25 +30,36 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //TODO MONTHLY ACTIVITY
+        monthlyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RESTClient restClient = new RESTClient();
+                restClient.getMonthlyProductivity(getApplicationContext(), MainActivity.this);
+            }
+        });
 
-
-        //TODO SET ALARM FOR NOTIFICATION
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 00);
-        calendar.set(Calendar.MINUTE, 53);
+        calendar.set(Calendar.HOUR_OF_DAY, 20);
+        calendar.set(Calendar.MINUTE, 17);
+
         Intent intent = new Intent(getApplicationContext(), NotificationReceiver.class);
+
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
                 getApplicationContext(),
                 100,
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT
         );
+
+        long systemTime = System.currentTimeMillis();
         AlarmManager alarmManager = (AlarmManager) MainActivity.this.getSystemService(ALARM_SERVICE);
+        if (systemTime >= calendar.getTimeInMillis()) {
+            calendar.add(Calendar.DATE, 1);
+        }
         alarmManager.setRepeating(
                 AlarmManager.RTC_WAKEUP,
                 calendar.getTimeInMillis(),
-                AlarmManager.INTERVAL_FIFTEEN_MINUTES,
+                AlarmManager.INTERVAL_DAY,
                 pendingIntent
         );
 

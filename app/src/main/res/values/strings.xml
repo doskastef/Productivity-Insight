@@ -8,4 +8,11 @@
     <string name="password_field_hint">password</string>
     <string name="monthly_button_txt">Monthly Productivity</string>
     <string name="daily_button_txt">Daily Productivity</string>
+    <string name="poll_txt">How productive was your day?</string>
+    <string name="radio_avg_txt">Average</string>
+    <string name="radio_nv_txt">Not very productive</string>
+    <string name="radio_naa_txt">Not at all productive</string>
+    <string name="radio_p_txt">Pretty productive</string>
+    <string name="submit_results_button_txt">Submit Results</string>
+    <string name="radio_v_txt">Very productive</string>
 </resources>

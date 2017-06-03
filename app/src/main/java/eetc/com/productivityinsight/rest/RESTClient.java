@@ -21,20 +21,245 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
 import eetc.com.productivityinsight.DaysActivity;
 import eetc.com.productivityinsight.MainActivity;
+import eetc.com.productivityinsight.MonthsActivity;
+import eetc.com.productivityinsight.PollActivity;
 import eetc.com.productivityinsight.SignUpActivity;
 import eetc.com.productivityinsight.db.ProductivityInsightDBHelper;
 import eetc.com.productivityinsight.db.User;
 
 public class RESTClient {
-    public static boolean outcome = true;
     private final String url = "http://10.0.2.2:8000/api/"; ///insight/days/4" //localhost emulator
     //private final String url = "http://192.168.1.2:8000/api/"; // localhost device
     //private final String url = "http://ip.jsontest.com/"; // remote host
+
+    public void postResult(final Context context, final PollActivity pollActivity, int result) {
+        ProductivityInsightDBHelper db = new ProductivityInsightDBHelper(context);
+        String postResultURL = url + "result/days";
+
+        List<User> users = db.readFromDB();
+        String email = null;
+        String password = null;
+        String user_id = null;
+        for (User user: users) {
+            user_id = Integer.toString(user.getUserID());
+            email = user.getUsername();
+            password = user.getPassword();
+        }
+        String dayName = null;
+        String monthName = null;
+
+        Calendar calendar = Calendar.getInstance();
+
+        int day = calendar.get(Calendar.DAY_OF_WEEK);
+        switch (day) {
+            case Calendar.MONDAY:
+                dayName = "monday";
+                break;
+            case Calendar.TUESDAY:
+                dayName = "tuesday";
+                break;
+            case Calendar.WEDNESDAY:
+                dayName = "wednesday";
+                break;
+            case Calendar.THURSDAY:
+                dayName = "thursday";
+                break;
+            case Calendar.FRIDAY:
+                dayName = "friday";
+                break;
+            case Calendar.SATURDAY:
+                dayName = "saturday";
+                break;
+            case Calendar.SUNDAY:
+                dayName = "sunday";
+                break;
+            default:
+                break;
+        }
+        int month = calendar.get(Calendar.MONTH);
+        switch (month) {
+            case Calendar.JANUARY:
+                monthName = "jan";
+                break;
+            case Calendar.FEBRUARY:
+                monthName = "feb";
+                break;
+            case Calendar.MARCH:
+                monthName = "mar";
+                break;
+            case Calendar.APRIL:
+                monthName = "apr";
+                break;
+            case Calendar.MAY:
+                monthName = "may";
+                break;
+            case Calendar.JUNE:
+                monthName = "jun";
+                break;
+            case Calendar.JULY:
+                monthName = "jul";
+                break;
+            case Calendar.AUGUST:
+                monthName = "aug";
+                break;
+            case Calendar.SEPTEMBER:
+                monthName = "sep";
+                break;
+            case Calendar.OCTOBER:
+                monthName = "oct";
+                break;
+            case Calendar.NOVEMBER:
+                monthName = "nov";
+                break;
+            case Calendar.DECEMBER:
+                monthName = "dec";
+                break;
+            default:
+                break;
+        }
+
+        try {
+            RequestQueue queue = Volley.newRequestQueue(context);
+
+            HashMap<String, String> params = new HashMap<>();
+            params.put("email", email);
+            params.put("password", password);
+            params.put("user_id", user_id);
+            params.put("week_day", dayName);
+            params.put("month", monthName);
+            params.put("result", Integer.toString(result));
+
+            JSONObject jsonObj = new JSONObject(params);
+
+            /*
+            // CONVERT JSON OBJECT TO JSON ARRAY
+            JSONArray json = new JSONArray();
+            json.put(jsonObj);
+            */
+
+            JsonObjectRequest req = new JsonObjectRequest(
+                    Request.Method.POST,
+                    postResultURL,
+                    jsonObj,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                Log.i("JSON response postRes()", response.toString(4));
+                                pollActivity.finish();
+                            } catch (JSONException jsonException) {
+                                jsonException.printStackTrace();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            NetworkResponse nr = error.networkResponse;
+                            if (nr != null && nr.statusCode == 422) {
+                                CharSequence msg = "Unprocessable entity";
+                                Toast t = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+                                t.show();
+                            }
+                            if (nr != null && nr.statusCode == 404) {
+                                CharSequence msg = "User not found";
+                                Toast t = Toast.makeText(context, msg, Toast.LENGTH_LONG);
+                                t.show();
+                            }
+                            if (nr != null && nr.statusCode == 400) {
+                                CharSequence msg = "Bad Request";
+                                Toast t = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+                                t.show();
+                            }
+                            if (nr != null && nr.statusCode == 201) {
+                                CharSequence msg = "Updated productivity results.";
+                                Toast t = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+                                t.show();
+                            }
+
+                            Log.i("Volley Error signUp()", error.toString());
+                        }
+                    }
+            );
+
+            req.setRetryPolicy(new DefaultRetryPolicy(50000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+            );
+
+            queue.add(req);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getMonthlyProductivity(final Context context, final MainActivity mainActivity) {
+        ProductivityInsightDBHelper db = new ProductivityInsightDBHelper(context);
+        String dailyProductivityURL = url + "insight/months/";
+        List<User> users = db.readFromDB();
+        String user_id = null;
+        for (User user: users) {
+            user_id = Integer.toString(user.getUserID());
+        }
+        dailyProductivityURL += user_id;
+
+        RequestQueue queue = Volley.newRequestQueue(context);
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                dailyProductivityURL,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Bundle bundle = new Bundle();
+                            Log.i("JUN_PROD", Integer.toString(response.getInt("jun_prod")));
+                            bundle.putInt("jan", response.getInt("jan_prod"));
+                            bundle.putInt("feb", response.getInt("feb_prod"));
+                            bundle.putInt("mar", response.getInt("mar_prod"));
+                            bundle.putInt("apr", response.getInt("apr_prod"));
+                            bundle.putInt("may", response.getInt("may_prod"));
+                            bundle.putInt("jun", response.getInt("jun_prod"));
+                            bundle.putInt("jul", response.getInt("jul_prod"));
+                            bundle.putInt("aug", response.getInt("aug_prod"));
+                            bundle.putInt("sep", response.getInt("sep_prod"));
+                            bundle.putInt("oct", response.getInt("oct_prod"));
+                            bundle.putInt("nov", response.getInt("nov_prod"));
+                            bundle.putInt("dec", response.getInt("dec_prod"));
+
+                            Intent startMonths = new Intent(context, MonthsActivity.class);
+                            startMonths.putExtras(bundle);
+
+                            mainActivity.startActivity(startMonths);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("VolleyError montProd()", error.toString());
+                    }
+                }
+        );
+
+        request.setRetryPolicy(new DefaultRetryPolicy(50000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+        );
+
+        queue.add(request);
+    }
 
     public void getDailyProductivity(final Context context, final MainActivity mainActivity) {
         ProductivityInsightDBHelper db = new ProductivityInsightDBHelper(context);
@@ -134,7 +359,6 @@ public class RESTClient {
                                 signUpActivity.startActivity(startMain);
                                 signUpActivity.finish();
 
-                                outcome = true;
                             } catch (JSONException jsonException) {
                                 jsonException.printStackTrace();
                             }
@@ -146,15 +370,12 @@ public class RESTClient {
                             NetworkResponse nr = error.networkResponse;
                             if (nr != null && nr.statusCode == 409) {
                                 CharSequence msg = "Account with that email already exists!";
-                                RESTClient.outcome = false;
                                 Toast t = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
                                 t.show();
                             }
-                            RESTClient.outcome = false;
 
                             if (nr != null && nr.statusCode == 201) {
                                 CharSequence msg = "Signup Successful!";
-                                RESTClient.outcome = true;
                                 Toast t = Toast.makeText(context, msg, Toast.LENGTH_LONG);
                                 t.show();
                             }
@@ -174,7 +395,6 @@ public class RESTClient {
 
         } catch (Exception e) {
             e.printStackTrace();
-            RESTClient.outcome = false;
             //return RESTClient.outcome;
         }
     }
