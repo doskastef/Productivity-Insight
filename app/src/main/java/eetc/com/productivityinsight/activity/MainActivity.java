@@ -1,4 +1,4 @@
-package eetc.com.productivityinsight;
+package eetc.com.productivityinsight.activity;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import java.util.Calendar;
 
+import eetc.com.productivityinsight.notification.NotificationReceiver;
+import eetc.com.productivityinsight.R;
 import eetc.com.productivityinsight.rest.RESTClient;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 20);
-        calendar.set(Calendar.MINUTE, 17);
+        calendar.set(Calendar.HOUR_OF_DAY, 16);
+        calendar.set(Calendar.MINUTE, 42);
 
         Intent intent = new Intent(getApplicationContext(), NotificationReceiver.class);
 
@@ -63,5 +65,9 @@ public class MainActivity extends AppCompatActivity {
                 pendingIntent
         );
 
+        //TODO ADD LOGOUT OPTION THAT DELETES ALL USERS FROM DATABASE
+        // database can have only one entry at any moment
+        //TODO ADD LOGIN OPTION THAT HANDLES 409 REQUEST BY WRITING USER TO DATABASE
+        //LOGIN IS SAME AS SIGNUP EXCEPT 409 IS THE ONLY ACCEPTABLE RESPONSE
     }
 }

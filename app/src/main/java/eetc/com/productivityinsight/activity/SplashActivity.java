@@ -1,4 +1,4 @@
-package eetc.com.productivityinsight;
+package eetc.com.productivityinsight.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.util.Log;
 
 import java.util.concurrent.TimeUnit;
 
+import eetc.com.productivityinsight.activity.MainActivity;
+import eetc.com.productivityinsight.activity.SignUpActivity;
 import eetc.com.productivityinsight.db.ProductivityInsightDBHelper;
 
 public class SplashActivity extends AppCompatActivity {

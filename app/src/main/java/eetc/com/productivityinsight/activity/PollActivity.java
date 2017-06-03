@@ -1,4 +1,4 @@
-package eetc.com.productivityinsight;
+package eetc.com.productivityinsight.activity;
 
 import android.content.Intent;
 import android.support.annotation.IdRes;
@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.RadioGroup;
 
+import eetc.com.productivityinsight.R;
 import eetc.com.productivityinsight.rest.RESTClient;
 
 public class PollActivity extends AppCompatActivity {

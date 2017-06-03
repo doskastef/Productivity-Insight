@@ -22,11 +22,11 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-import eetc.com.productivityinsight.DaysActivity;
-import eetc.com.productivityinsight.MainActivity;
-import eetc.com.productivityinsight.MonthsActivity;
-import eetc.com.productivityinsight.PollActivity;
-import eetc.com.productivityinsight.SignUpActivity;
+import eetc.com.productivityinsight.activity.DaysActivity;
+import eetc.com.productivityinsight.activity.MainActivity;
+import eetc.com.productivityinsight.activity.MonthsActivity;
+import eetc.com.productivityinsight.activity.PollActivity;
+import eetc.com.productivityinsight.activity.SignUpActivity;
 import eetc.com.productivityinsight.db.ProductivityInsightDBHelper;
 import eetc.com.productivityinsight.db.User;
 
@@ -388,11 +388,9 @@ public class RESTClient {
             );
 
             queue.add(req);
-            //return RESTClient.outcome;
 
         } catch (Exception e) {
             e.printStackTrace();
-            //return RESTClient.outcome;
         }
     }
 }

@@ -16,10 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".TestDBActivity" />
+        <activity android:name=".activity.SignUpActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,11 +26,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".DaysActivity" />
-        <activity android:name=".MonthsActivity" />
-        <activity android:name=".PollActivity" />
-        <receiver android:name=".NotificationReceiver"/>
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.DaysActivity" />
+        <activity android:name=".activity.MonthsActivity" />
+        <activity android:name=".activity.PollActivity" />
+        <receiver android:name=".notification.NotificationReceiver"/>
     </application>
 
 </manifest>

@@ -98,15 +98,12 @@ public class ProductivityInsightDBHelper extends SQLiteOpenHelper {
         if (cursor != null && cursor.getCount() < 1) {
             Log.i("DB", "Database is empty!");
         } else {
-            Log.i("DB", "Printing _ID for entries in DB");
             while (cursor.moveToNext()) {
                 User user = new User();
-                Log.i("DB", "_ID: " + Integer.toString(cursor.getColumnIndexOrThrow(ProductivityInsightEntry._ID)));
                 user.setUsername(cursor.getString(cursor.getColumnIndex(ProductivityInsightEntry.COLUMN_USERNAME)));
                 user.setPassword(cursor.getString(cursor.getColumnIndex(ProductivityInsightEntry.COLUMN_PASSWORD)));
                 user.setUserID(cursor.getInt(cursor.getColumnIndex(ProductivityInsightEntry.COLUMN_USER_ID)));
                 users.add(user);
-                Log.i("DB", user.toString());
             }
         }
         cursor.close();

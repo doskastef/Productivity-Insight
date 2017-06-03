@@ -1,4 +1,4 @@
-package eetc.com.productivityinsight;
+package eetc.com.productivityinsight.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import eetc.com.productivityinsight.R;
 import eetc.com.productivityinsight.rest.RESTClient;
 
 public class SignUpActivity extends AppCompatActivity {

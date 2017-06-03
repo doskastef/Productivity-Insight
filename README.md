@@ -1,78 +1,50 @@
 # Productivity-Insight
 
-One Paragraph of project description goes here
+**Android application that analyzes and keeps track of the user's and monthly productivity.**
 
-## Getting Started
+**Note:** The app is not published on the Google Play Store yet, so this is not a complete version, there are 
+still a few features to be added + a pretty, graphical user interface design. This is a **MVP**
+(Minimum Viable Product).
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The app helps the user figure out on which period of time he or she is most productive at.
+Currently those periods of time include months(January, February, ...)
+and week days(Monday, Tuesday, ...), but more specific periods will be added like parts of days
+(Morning, Afternoon, Evening, ...), maybe even hours.
+
+The app takes an absolutely minimal amount of user's time to use. The only "work" the user need 
+to do is to click on a notification that pops up every day at 20:17 and choose one of the productivity 
+scores to tell the app how productive his or her day was. This is necessary in order to keep the data updated 
+and for the app to be of any use.
+
+The app currently has 5 different scores for productivity:
+* Very productive
+* Pretty productive
+* Average
+* Not very productive
+* Not at all productive
+
+and all those have numerical values assigned to them, which the program uses to calculate 
+productivity for all periods of time.
+
+The app's backend ([Productivity-Insight-Backend](https://github.com/delicmakaveli/Productivity-Insight-Backend)) built with Python and Django is a separate project, also on my GitHub, 
+click [here](https://github.com/delicmakaveli/Productivity-Insight-Backend#productivity-insight-backend) to read more about it.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+The app's minimal API is 15 (Ice Cream Sandwich), so it will work on anything above that.
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+The app is not published on the Google Play Store yet.
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Java](http://www.dropwizard.io/1.0.2/docs/) - Java 1.7 used
+* [Volley](https://github.com/google/volley) - HTTP Library that communicates with [the backend](https://github.com/delicmakaveli/Productivity-Insight-Backend)
 
-## Contributing
+## Author
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Stefan Delic** - [delicmakaveli](https://github.com/delicmakaveli)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
@@ -83,6 +55,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Hat tip to anyone who's code was used
-* Inspiration
-* etc
-

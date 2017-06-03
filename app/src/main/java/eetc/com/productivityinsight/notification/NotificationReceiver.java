@@ -1,4 +1,4 @@
-package eetc.com.productivityinsight;
+package eetc.com.productivityinsight.notification;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -6,6 +6,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
+
+import eetc.com.productivityinsight.activity.PollActivity;
 
 public class NotificationReceiver extends BroadcastReceiver {
     @Override
