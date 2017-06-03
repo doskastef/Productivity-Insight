@@ -44,7 +44,7 @@ The app is not published on the Google Play Store yet. Will add installation and
 
 ## Author
 
-* **Stefan Delic** - [delicmakaveli](https://github.com/delicmakaveli)
+* **Stefan Delic** _Creation and Initial Work_- [delicmakaveli](https://github.com/delicmakaveli)
 
 See also the list of [contributors](https://github.com/delicmakaveli/Productivity-Insight/contributors) who participated in this project.
 
