@@ -29,17 +29,17 @@ productivity for all periods of time.
 The app's backend ([Productivity-Insight-Backend](https://github.com/delicmakaveli/Productivity-Insight-Backend)) built with Python and Django is a separate project, also on my GitHub, 
 click [here](https://github.com/delicmakaveli/Productivity-Insight-Backend#productivity-insight-backend) to read more about it.
 
-### Prerequisites
+## Prerequisites
 
 The app's minimal API is 15 (Ice Cream Sandwich), so it will work on anything above that.
 
-### Installing
+## Installing
 
-The app is not published on the Google Play Store yet.
+The app is not published on the Google Play Store yet. Will add installation and usage instruction when the app is published.
 
 ## Built With
 
-* [Java](http://www.dropwizard.io/1.0.2/docs/) - Java 1.7 used
+* [Java 1.7](http://docs.oracle.com/javase/7/docs/api/) - Language of the project
 * [Volley](https://github.com/google/volley) - HTTP Library that communicates with [the backend](https://github.com/delicmakaveli/Productivity-Insight-Backend)
 
 ## Author
