@@ -17,4 +17,5 @@
     <string name="radio_v_txt">Very productive</string>
     <string name="months_order_expl_txt">(ordered from most productive to least productive)</string>
     <string name="months_title_txt">Your most productive months</string>
+    <string name="sign_up_button_txt">Sign Up</string>
 </resources>
