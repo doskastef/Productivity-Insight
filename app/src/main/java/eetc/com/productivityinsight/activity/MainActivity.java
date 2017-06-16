@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 16);
-        calendar.set(Calendar.MINUTE, 42);
+        calendar.set(Calendar.HOUR_OF_DAY, 20);
+        calendar.set(Calendar.MINUTE, 07);
 
         Intent intent = new Intent(getApplicationContext(), NotificationReceiver.class);
 

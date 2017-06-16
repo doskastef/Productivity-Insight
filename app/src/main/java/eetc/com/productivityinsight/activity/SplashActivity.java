@@ -22,7 +22,7 @@ public class SplashActivity extends AppCompatActivity {
 
         Log.i("START", " Started Splash Activity.");
         try {
-            TimeUnit.SECONDS.sleep((long)4);
+            TimeUnit.SECONDS.sleep((long)3);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
