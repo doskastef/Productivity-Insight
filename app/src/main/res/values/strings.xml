@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Productivity Insight</string>
-    <string name="sign_up_text">Sign Up:</string>
+    <string name="sign_up_text">Please Sign Up:</string>
     <string name="signup_btn_txt">Sign Up</string>
     <string name="email_label_txt">Enter email:</string>
     <string name="password_label_txt">Enter password:</string>
@@ -18,4 +18,8 @@
     <string name="months_order_expl_txt">(ordered from most productive to least productive)</string>
     <string name="months_title_txt">Your most productive months</string>
     <string name="sign_up_button_txt">Sign Up</string>
+    <string name="login_link_text">I already have an account, just let me log in.</string>
+    <string name="log_in_button_txt">Log In</string>
+    <string name="signup_link_txt">I dont\'t have an account. Let me sign up.</string>
+    <string name="please_log_in_txt">Please Log In:</string>
 </resources>
