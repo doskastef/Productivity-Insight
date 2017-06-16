@@ -22,4 +22,5 @@
     <string name="log_in_button_txt">Log In</string>
     <string name="signup_link_txt">I dont\'t have an account. Let me sign up.</string>
     <string name="please_log_in_txt">Please Log In:</string>
+    <string name="app_background_image_descr">App\'s background image</string>
 </resources>
