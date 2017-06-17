@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, 20);
-        calendar.set(Calendar.MINUTE, 07);
+        calendar.set(Calendar.MINUTE, 17);
 
         Intent intent = new Intent(getApplicationContext(), NotificationReceiver.class);
 
@@ -61,8 +62,9 @@ public class MainActivity extends AppCompatActivity {
 
         long systemTime = System.currentTimeMillis();
         AlarmManager alarmManager = (AlarmManager) MainActivity.this.getSystemService(ALARM_SERVICE);
-        if (systemTime >= calendar.getTimeInMillis()) {
+        if (systemTime > calendar.getTimeInMillis()) {
             calendar.add(Calendar.DATE, 1);
+            Log.i("NOTIFICATION", "Delayed notification to next day");
         }
         alarmManager.setRepeating(
                 AlarmManager.RTC_WAKEUP,
@@ -79,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
             loggedInAs.setText(str);
         }
 
-        //TODO ADD LOGOUT OPTION THAT DELETES ALL USERS FROM DATABASE
         TextView logOut = (TextView) findViewById(R.id.logout_link_txt);
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,8 +91,5 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-        // database can have only one entry at any moment
-        //TODO ADD LOGIN OPTION THAT HANDLES 409 REQUEST BY WRITING USER TO DATABASE
-        //LOGIN IS SAME AS SIGNUP EXCEPT 409 IS THE ONLY ACCEPTABLE RESPONSE
     }
 }

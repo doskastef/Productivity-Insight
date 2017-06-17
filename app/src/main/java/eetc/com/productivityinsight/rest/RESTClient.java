@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import eetc.com.productivityinsight.activity.DaysActivity;
+import eetc.com.productivityinsight.activity.LoginActivity;
 import eetc.com.productivityinsight.activity.MainActivity;
 import eetc.com.productivityinsight.activity.MonthsActivity;
 import eetc.com.productivityinsight.activity.PollActivity;
@@ -316,7 +317,6 @@ public class RESTClient {
 
 
     public void signUp(final String email, final String password, final Context context, final SignUpActivity signUpActivity) {
-
         String signupURL = url + "create_user";
 
         try {
@@ -393,4 +393,83 @@ public class RESTClient {
             e.printStackTrace();
         }
     }
+
+    public void logIn(final String email, final String password, final Context context, final LoginActivity loginActivity) {
+        String loginURL = url + "login_user";
+
+        try {
+            RequestQueue queue = Volley.newRequestQueue(context);
+
+            HashMap<String, String> params = new HashMap<>();
+            params.put("email", email);
+            params.put("password", password);
+
+            JSONObject jsonObj = new JSONObject(params);
+
+            /*
+            // CONVERT JSON OBJECT TO JSON ARRAY
+            JSONArray json = new JSONArray();
+            json.put(jsonObj);
+            */
+
+            JsonObjectRequest req = new JsonObjectRequest(
+                    Request.Method.POST,
+                    loginURL,
+                    jsonObj,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                Log.i("JSON response logIn()", response.toString(4));
+                                int user_id = response.getInt("id");
+
+                                User user = new User(email, password, user_id);
+                                ProductivityInsightDBHelper db = new ProductivityInsightDBHelper(context);
+                                Log.i("USER", user.getUsername());
+                                Log.i("USER", user.getPassword());
+                                Log.i("USER", Integer.toString(user.getUserID()));
+                                db.addUserToDB(user);
+
+                                Intent startMain = new Intent(context, MainActivity.class);
+                                loginActivity.startActivity(startMain);
+                                loginActivity.finish();
+
+                            } catch (JSONException jsonException) {
+                                jsonException.printStackTrace();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            NetworkResponse nr = error.networkResponse;
+                            if (nr != null && nr.statusCode == 404) {
+                                CharSequence msg = "Wrong email/password!";
+                                Toast t = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+                                t.show();
+                            }
+
+                            if (nr != null && nr.statusCode == 200) {
+                                CharSequence msg = "Log In Successful!";
+                                Toast t = Toast.makeText(context, msg, Toast.LENGTH_LONG);
+                                t.show();
+                            }
+
+                            Log.i("Volley Error logIn()", error.toString());
+                        }
+                    }
+            );
+
+            req.setRetryPolicy(new DefaultRetryPolicy(50000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+            );
+
+            queue.add(req);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
