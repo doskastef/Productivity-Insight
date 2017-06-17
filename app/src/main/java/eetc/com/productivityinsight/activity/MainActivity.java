@@ -7,9 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.Calendar;
+import java.util.List;
 
+import eetc.com.productivityinsight.db.ProductivityInsightDBHelper;
+import eetc.com.productivityinsight.db.User;
 import eetc.com.productivityinsight.notification.NotificationReceiver;
 import eetc.com.productivityinsight.R;
 import eetc.com.productivityinsight.rest.RESTClient;
@@ -65,7 +71,25 @@ public class MainActivity extends AppCompatActivity {
                 pendingIntent
         );
 
+        TextView loggedInAs = (TextView) findViewById(R.id.logged_in_as_txt);
+        final ProductivityInsightDBHelper dbHelper = new ProductivityInsightDBHelper(getApplicationContext());
+        List<User> res = dbHelper.readFromDB();
+        for (User user : res) {
+            String str = "Logged in as: " + user.getUsername();
+            loggedInAs.setText(str);
+        }
+
         //TODO ADD LOGOUT OPTION THAT DELETES ALL USERS FROM DATABASE
+        TextView logOut = (TextView) findViewById(R.id.logout_link_txt);
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startLogOut = new Intent(getApplicationContext(), LoginActivity.class);
+                dbHelper.deleteAll();
+                startActivity(startLogOut);
+                finish();
+            }
+        });
         // database can have only one entry at any moment
         //TODO ADD LOGIN OPTION THAT HANDLES 409 REQUEST BY WRITING USER TO DATABASE
         //LOGIN IS SAME AS SIGNUP EXCEPT 409 IS THE ONLY ACCEPTABLE RESPONSE
