@@ -1,6 +1,7 @@
 package eetc.com.productivityinsight.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -34,6 +35,31 @@ public class ProductivityListAdapter extends ArrayAdapter<TimeUnit> {
 
         name.setText(unit.getName());
         productivity.setText(unit.getProductivity());
+        String prod = unit.getProductivity();
+        switch (prod) {
+            case "Very productive.":
+                productivityListItemView.setBackgroundColor(Color.rgb(0, 255, 0));
+                break;
+            case "Pretty productive.":
+                productivityListItemView.setBackgroundColor(Color.rgb(153, 255, 51));
+                break;
+            case "Average.":
+                productivityListItemView.setBackgroundColor(Color.rgb(255, 255, 0));
+                break;
+            case "Not very productive.":
+                productivityListItemView.setBackgroundColor(Color.rgb(255, 71, 26));
+                break;
+            case "Not at all productive.":
+                productivityListItemView.setBackgroundColor(Color.rgb(255,0,0));
+                break;
+            case "No data available yet.":
+                productivityListItemView.setBackgroundColor(Color.GRAY);
+                break;
+            default:
+                break;
+        }
+
+        productivityListItemView.getBackground().setAlpha(169);
 
         return productivityListItemView;
     }

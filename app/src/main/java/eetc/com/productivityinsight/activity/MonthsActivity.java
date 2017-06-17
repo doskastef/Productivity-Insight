@@ -96,11 +96,5 @@ public class MonthsActivity extends AppCompatActivity {
 
         ListView monthsListView = (ListView) findViewById(R.id.months_list_view);
         monthsListView.setAdapter(monthsAdapter);
-
-        /*
-        CharSequence msg = "JUN " + bundle.get("jun").toString();
-        Toast t = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
-        t.show();
-        */
     }
 }

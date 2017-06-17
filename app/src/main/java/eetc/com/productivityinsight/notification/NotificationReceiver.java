@@ -20,7 +20,8 @@ public class NotificationReceiver extends BroadcastReceiver {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setContentIntent(pendingIntent)
-                .setContentTitle("Not Title")
+                .setContentTitle("It's time to rate your productivity!")
+                .setContentText("Click to quickly tell us how productive your day was.")
                 .setSmallIcon(android.R.drawable.arrow_up_float)
                 .setAutoCancel(true);
 

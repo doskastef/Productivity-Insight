@@ -15,8 +15,9 @@
     <string name="radio_p_txt">Pretty productive</string>
     <string name="submit_results_button_txt">Submit Results</string>
     <string name="radio_v_txt">Very productive</string>
-    <string name="months_order_expl_txt">(ordered from most productive to least productive)</string>
-    <string name="months_title_txt">Your most productive months</string>
+    <string name="months_order_expl_txt">(green - good, red - bad, yellow - average)</string>
+    <string name="months_title_txt">Your productivity for all months</string>
+    <string name="days_title_txt">Your productivity for all days of the week</string>
     <string name="sign_up_button_txt">Sign Up</string>
     <string name="login_link_text">I already have an account, just let me log in.</string>
     <string name="log_in_button_txt">Log In</string>

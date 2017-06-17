@@ -18,6 +18,8 @@ public class WeekDay extends TimeUnit {
             this.productivity = "Average.";
         } else if (productivity_score > -4) {
             this.productivity = "Not very productive.";
+        } else if (productivity_score == 144) {
+            this.productivity = "No data available yet.";
         } else {
             this.productivity = "Not at all productive.";
         }

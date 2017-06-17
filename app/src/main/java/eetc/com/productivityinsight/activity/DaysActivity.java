@@ -22,11 +22,6 @@ public class DaysActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_days);
         Bundle bundle = getIntent().getExtras();
-        /*
-        CharSequence msg = "MON " + bundle.get("mon_prod").toString();
-        Toast t = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
-        t.show();
-        */
 
         TimeUnit[] days = new TimeUnit[7];
         if (bundle != null) {

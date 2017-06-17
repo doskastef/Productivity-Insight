@@ -20,7 +20,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Log.i("START", " Started SignUp Activity.");
+        Log.i("START", " Started LogIn Activity.");
 
         final EditText emailField = (EditText) findViewById(R.id.email_field1);
         final EditText passwordField = (EditText) findViewById(R.id.password_field1);

@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context="eetc.com.productivityinsight.activity.DaysActivity">
 
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/app_background_image_descr"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/background" />
+
     <TextView
         android:id="@+id/days_title"
         android:layout_width="wrap_content"
@@ -13,8 +27,9 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="Your most productive week days"
+        android:text="@string/days_title_txt"
         android:textAlignment="center"
+        android:textColor="#c4c5c6"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -28,9 +43,11 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="4dp"
-        android:text="(ordered from most productive to least productive)"
+        android:text="@string/months_order_expl_txt"
         android:textAlignment="center"
+        android:textColor="#c4c5c6"
         android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/days_title" />
