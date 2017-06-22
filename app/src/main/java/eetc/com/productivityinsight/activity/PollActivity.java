@@ -1,6 +1,7 @@
 package eetc.com.productivityinsight.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,9 @@ public class PollActivity extends AppCompatActivity {
         setContentView(R.layout.activity_poll);
 
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+
+        radioGroup.setBackgroundColor(Color.WHITE);
+        radioGroup.getBackground().setAlpha(100);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

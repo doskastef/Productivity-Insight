@@ -1,5 +1,7 @@
 package eetc.com.productivityinsight.unit;
 
+import android.util.Log;
+
 public class Month extends TimeUnit {
     private String name;
     private String productivity;
@@ -18,10 +20,13 @@ public class Month extends TimeUnit {
             this.productivity = "Average.";
         } else if (productivity_score > -4) {
             this.productivity = "Not very productive.";
-        } else if (productivity_score == 144) {
-            this.productivity = "No data available yet.";
         } else {
             this.productivity = "Not at all productive.";
+        }
+
+        if (productivity_score == -144) {
+            Log.i("TEST", "PRC");
+            this.productivity = "No data available yet.";
         }
     }
 

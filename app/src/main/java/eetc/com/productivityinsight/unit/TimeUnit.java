@@ -22,6 +22,10 @@ public class TimeUnit {
         } else {
             this.productivity = "Not at all productive.";
         }
+
+        if (productivity_score == -144) {
+            this.productivity = "No data available yet.";
+        }
     }
 
     public String getName() {

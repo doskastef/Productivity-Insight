@@ -53,7 +53,7 @@ public class ProductivityListAdapter extends ArrayAdapter<TimeUnit> {
                 productivityListItemView.setBackgroundColor(Color.rgb(255,0,0));
                 break;
             case "No data available yet.":
-                productivityListItemView.setBackgroundColor(Color.GRAY);
+                productivityListItemView.setBackgroundColor(Color.rgb(77, 248, 248));
                 break;
             default:
                 break;
